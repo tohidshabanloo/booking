@@ -1,0 +1,7 @@
+.footerRoot {
+  background-color: var(--primary-color);
+  color: white;
+  height: 150px;
+  text-align: center;
+  padding: 20px;
+}

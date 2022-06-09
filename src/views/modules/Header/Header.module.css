@@ -1,0 +1,7 @@
+.headerRoot {
+  background-color: var(--primary-color);
+  color: white;
+  height: 110px;
+  text-align: center;
+  padding: 20px;
+}
