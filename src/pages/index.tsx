@@ -1,15 +1,12 @@
 import type { NextPage } from "next";
 import MainLayout from "@/layout/MainLayout";
+import HomeTemplate from "@/temp/HomeTemplate";
 
 const Home: NextPage = () => {
   return (
-    <div>
-      <div>
-        <MainLayout>
-          <div>Home</div>
-        </MainLayout>
-      </div>
-    </div>
+    <MainLayout>
+      <HomeTemplate />
+    </MainLayout>
   );
 };
 

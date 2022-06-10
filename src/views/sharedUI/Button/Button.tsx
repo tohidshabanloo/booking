@@ -1,24 +1,21 @@
-import {
-  ButtonHTMLAttributes,
-  Children,
-  createElement,
-  FC,
-  ReactNode,
-} from "react";
-import styles from "./Button.module.css";
+import { ButtonHTMLAttributes, createElement, FC, ReactNode } from "react";
+import Styles from "./Button.module.css";
 
 interface IButtonProps extends ButtonHTMLAttributes<Element> {
   children: ReactNode;
 }
+
 const Button: FC<IButtonProps> = (props) => {
-  const { children, className, ...otherprops } = props;
+  const { children, className, ...otherProps } = props;
+
   return createElement(
     "button",
     {
-      className: `${styles.buttonRoot} ${className}`,
-      ...otherprops,
+      className: `${Styles.buttonRoot} ${className}`,
+      ...otherProps,
     },
     children
   );
 };
+
 export default Button;

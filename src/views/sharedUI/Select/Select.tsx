@@ -1,25 +1,56 @@
-import styles from "./Select.module.css";
-import type { FC, ReactNode } from "react";
+import { FC, useEffect, useState } from "react";
+import Styles from "./Select.module.css";
 
 interface ISelectProps {
   data: {
     value: string;
-    label: ReactNode;
+    label: string;
   }[];
   onChange: (param: string) => void;
+  title: string;
+  className?: string;
 }
 
 const Select: FC<ISelectProps> = (props) => {
-  const { data, onChange } = props;
+  const { data, onChange, title, className = "" } = props;
+
+  const [filterdList, setFilterdList] = useState(data);
+  const onFilter = (str: string): void => {
+    const newList = data.filter((el) => el.label.includes(str));
+    setFilterdList(newList);
+  };
+
+  useEffect(() => {
+    setFilterdList(data);
+  }, [data]);
+
+  const [inputValue, setInputValue] = useState("");
+  const onInputChange = (e: any) => {
+    const val = e.target.value;
+    setInputValue(val);
+    onFilter(val);
+  };
 
   return (
-    <>
-      {data.map((el) => (
-        <div key={el.value} onClick={() => onChange(el.value)}>
-          {el.label}
-        </div>
-      ))}
-    </>
+    <div className={`${Styles.selectRoot} ${className}`.trim()}>
+      <input
+        className={Styles.selectInput}
+        onChange={onInputChange}
+        value={inputValue}
+        placeholder={title}
+      />
+      <ul className={Styles.selectList}>
+        {filterdList.map((el) => (
+          <li
+            className={Styles.selectItem}
+            key={el.value}
+            onClick={() => onChange(el.value)}
+          >
+            {el.label}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 

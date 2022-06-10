@@ -1,8 +1,12 @@
-import styles from "./Footer.module.css";
 import type { FC } from "react";
+import styles from "./Footer.module.css";
 
 const Footer: FC = () => {
-  return <footer className={styles.footerRoot}>کلیه حقوق محفوظ است</footer>;
+  return (
+    <footer className={styles.footerRoot}>
+      <p>کلیه حقوق محفوظ است</p>
+    </footer>
+  );
 };
 
 export default Footer;
